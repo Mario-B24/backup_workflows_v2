@@ -1,0 +1,45 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2025-08-05T19:17:19.606Z",
+  "id": "gWqg04QUpuLCcEWf",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "First - Protect Webhook",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "Mario",
+        "authentication": "jwtAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "f3df40fc-0965-4fbe-8617-1c04eae213bf",
+      "name": "Webhook",
+      "webhookId": "d79b5ebc-f884-4f48-859d-fbe44d09ed5e",
+      "credentials": {
+        "jwtAuth": {
+          "id": "oaKMCRoR3P4ujl05",
+          "name": "JWT Auth account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-08-05T19:33:31.000Z",
+  "versionId": "139e70d2-0bdf-47d6-9a45-b7407aa9c15d"
+}
