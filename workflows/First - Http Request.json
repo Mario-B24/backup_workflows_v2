@@ -1,0 +1,160 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-08-05T16:30:16.769Z",
+  "id": "OLhQZvTIMfNqcb5U",
+  "isArchived": false,
+  "meta": null,
+  "name": "First - Http Request",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -400,
+        -144
+      ],
+      "id": "03fd6469-4998-4f1e-be41-1e505e4df2fa",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "url": "https://exercisedb.p.rapidapi.com/exercises",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "={{ $json.limit }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-rapidapi-host",
+              "value": "exercisedb.p.rapidapi.com"
+            },
+            {
+              "name": "x-rapidapi-key",
+              "value": "3c6959c853msh78defac880ed0bap1b8e88jsn063de0aea736"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        176,
+        -256
+      ],
+      "id": "86caf5d0-2c66-462e-8e04-c61eb12ed0f0",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "95f26d8d-7776-498d-b8c0-e8fcfa599548",
+              "name": "limit",
+              "value": "2",
+              "type": "string"
+            },
+            {
+              "id": "fab2220a-ab85-4d99-808e-f6f8c1480f7d",
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -128,
+        -160
+      ],
+      "id": "f3a9de11-52e2-4a59-b1ff-86ee4caf92e9",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "url": "https://exercisedb.p.rapidapi.com/exercises/equipmentList",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "={{ $json.limit }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-rapidapi-host",
+              "value": "exercisedb.p.rapidapi.com"
+            },
+            {
+              "name": "x-rapidapi-key",
+              "value": "3c6959c853msh78defac880ed0bap1b8e88jsn063de0aea736"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        208,
+        48
+      ],
+      "id": "0527163a-6673-4c02-8786-ac432b933134",
+      "name": "HTTP Request1"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-08-05T16:52:38.000Z",
+  "versionId": "9fe355a0-e4a0-4bd0-8eb1-8470a87ba475"
+}
