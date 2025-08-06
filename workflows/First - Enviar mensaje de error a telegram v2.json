@@ -1,0 +1,69 @@
+{
+  "active": false,
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-08-05T17:34:42.149Z",
+  "id": "lPlsOw5tNYXGMFXR",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "First - Enviar mensaje de error a telegram v2",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        16,
+        0
+      ],
+      "id": "d3d63195-054e-4d47-926a-c6111d4f98af",
+      "name": "Error Trigger"
+    },
+    {
+      "parameters": {
+        "chatId": "1263220649",
+        "text": "=Error: {{ $json.execution.error.message }}\n\nÚltimo nodo ejecutado:{{ $json.execution.lastNodeExecuted }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "dc7318ae-e5bf-4834-b3de-154ad78cc91e",
+      "name": "Send a text message",
+      "webhookId": "883afd02-51b1-4f72-9b6f-6bac6d0ac898",
+      "credentials": {
+        "telegramApi": {
+          "id": "fBZ06ORB3jVZ3bI6",
+          "name": "Telegram account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-08-05T18:04:44.000Z",
+  "versionId": "825e1322-cfc3-46bc-858c-57bd3f4b90aa"
+}
