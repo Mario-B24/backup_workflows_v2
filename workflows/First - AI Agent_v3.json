@@ -1,0 +1,337 @@
+{
+  "active": false,
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "API GOOGLE": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-08-06T08:30:40.703Z",
+  "id": "6s3zf90RO3fPpwWA",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "First - AI Agent_v3",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -304,
+        -32
+      ],
+      "id": "24489419-92ed-4ec5-ae9e-da0ea0729b71",
+      "name": "When chat message received",
+      "webhookId": "567bdf88-f6dd-4d80-adcf-a4c6324a5d7e"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1XLaTNKJduJtsbZNOA5TRk_Le5f9TqnuvyhvWkQS9hb0/edit?gid=0#gid=0",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Full 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1XLaTNKJduJtsbZNOA5TRk_Le5f9TqnuvyhvWkQS9hb0/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Busqueda": "={{ $json.chatInput }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Busqueda",
+              "displayName": "Busqueda",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Resultado",
+              "displayName": "Resultado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        -96,
+        -32
+      ],
+      "id": "0735b118-908f-4744-ad9b-579f5ca3f570",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "CK681pryAaae8AUQ",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('When chat message received').item.json.chatInput }}",
+        "options": {
+          "systemMessage": "Eres un asistente que me ayuda a buscar en google con la herramienta \"API GOOGLE\" todas las url de la busqueda que te pida por chat el usuario.\n\nContestar únicamente el listado de nombres y urls que venga de la herramienta \"API GOOGLE\"."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        112,
+        -32
+      ],
+      "id": "f720ad9b-ce51-4922-a9e6-c9cc0a299112",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('When chat message received').item.json.sessionId }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        128,
+        176
+      ],
+      "id": "f38a1d11-59e5-418f-8645-3bfa565dcca6",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Esta herrmaienta busca en google usando los términos del usuario.",
+        "url": "https://real-time-web-search.p.rapidapi.com/search-light",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "q",
+              "value": "how to build a website"
+            },
+            {
+              "name": "limit",
+              "value": "5"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-RapidAPI-Host",
+              "value": "real-time-web-search.p.rapidapi.com"
+            },
+            {
+              "name": "x-rapidapi-key",
+              "value": "3c6959c853msh78defac880ed0bap1b8e88jsn063de0aea736"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.2,
+      "position": [
+        256,
+        192
+      ],
+      "id": "740d1a27-6771-4d86-b3c2-a72762effb00",
+      "name": "API GOOGLE"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1XLaTNKJduJtsbZNOA5TRk_Le5f9TqnuvyhvWkQS9hb0/edit?gid=0#gid=0",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Full 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1XLaTNKJduJtsbZNOA5TRk_Le5f9TqnuvyhvWkQS9hb0/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Resultado": "={{ $json.output }}",
+            "Busqueda": "={{ $('Append row in sheet').item.json.Busqueda }}"
+          },
+          "matchingColumns": [
+            "Busqueda"
+          ],
+          "schema": [
+            {
+              "id": "Busqueda",
+              "displayName": "Busqueda",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Resultado",
+              "displayName": "Resultado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        464,
+        -32
+      ],
+      "id": "3a76b012-2490-40bb-9a3c-6e94967e5709",
+      "name": "Update row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "CK681pryAaae8AUQ",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-3.5-turbo",
+          "mode": "list",
+          "cachedResultName": "gpt-3.5-turbo"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        16,
+        160
+      ],
+      "id": "4410afb2-22c1-4e1b-bb51-b3c211affefa",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "PbTskakKvAONosc7",
+          "name": "OpenAi account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-08-06T11:12:46.000Z",
+  "versionId": "3fa918fa-3fd6-4200-b568-840909b97cc5"
+}
