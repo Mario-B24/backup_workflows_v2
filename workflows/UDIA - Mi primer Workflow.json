@@ -1,0 +1,213 @@
+{
+  "active": false,
+  "connections": {
+    "If": {
+      "main": [
+        []
+      ]
+    },
+    "Variables Iniciales": {
+      "main": [
+        [
+          {
+            "node": "Variables Iniciales1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Variables Iniciales1": {
+      "main": [
+        [
+          {
+            "node": "Variables Iniciales2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Variables Iniciales",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-08-05T10:29:01.226Z",
+  "id": "A4kP0Je8j7twe08k",
+  "isArchived": true,
+  "meta": null,
+  "name": "UDIA - Mi primer Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "59ffbb9a-a802-4a6d-9468-30fbe38a7f21",
+              "name": "Language",
+              "value": "Spanish",
+              "type": "string"
+            },
+            {
+              "id": "f761fb57-7325-401b-8274-fb51e1937a7a",
+              "name": "type",
+              "value": "Article",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        224,
+        -240
+      ],
+      "id": "6d5e0b0c-e9ad-4b14-b5c5-9f10dc8e70c9",
+      "name": "Variables Iniciales"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "794f64f4-c1f6-4acf-8ac5-42d8642e8f55",
+              "leftValue": "",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        224,
+        -48
+      ],
+      "id": "14310093-9ffd-4611-b0c4-fb23218166c2",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "59ffbb9a-a802-4a6d-9468-30fbe38a7f21",
+              "name": "Language",
+              "value": "Spanish",
+              "type": "string"
+            },
+            {
+              "id": "f761fb57-7325-401b-8274-fb51e1937a7a",
+              "name": "type",
+              "value": "Article",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        448,
+        -240
+      ],
+      "id": "bf45e5cc-c1c6-4ee9-a1a4-6b4519ae7cd4",
+      "name": "Variables Iniciales1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "59ffbb9a-a802-4a6d-9468-30fbe38a7f21",
+              "name": "Language",
+              "value": "Spanish",
+              "type": "string"
+            },
+            {
+              "id": "f761fb57-7325-401b-8274-fb51e1937a7a",
+              "name": "type",
+              "value": "Article",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        672,
+        -240
+      ],
+      "id": "d3f8b2b8-fd8f-4250-839e-b4b9609d8bac",
+      "name": "Variables Iniciales2"
+    },
+    {
+      "parameters": {
+        "public": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -96,
+        -144
+      ],
+      "id": "1d4aef3d-1456-490f-8e44-9c16a6b21a7f",
+      "name": "When chat message received",
+      "webhookId": "f5a3b1a1-65d0-4c56-b371-1291d94e5957"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Madrid",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2025-08-05T10:29:16.016Z",
+      "updatedAt": "2025-08-05T10:29:16.016Z",
+      "id": "Tr3AxjKCFpMHeW0b",
+      "name": "☕Pruebas"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-08-05T19:39:22.000Z",
+  "versionId": "63a02bfd-6a60-47ab-98d1-8845b0395b3e"
+}
