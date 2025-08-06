@@ -1,0 +1,137 @@
+{
+  "active": false,
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Append or update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-08-05T15:16:44.146Z",
+  "id": "SorrrOFs2nnmkOay",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "First - Sheet",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Newlater Mario N8N",
+        "formDescription": "Las últimas noticias de N8N en tu email",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Nombre",
+              "placeholder": "Aquí tu nombre",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Email",
+              "fieldType": "email",
+              "placeholder": "Tu email",
+              "requiredField": true
+            },
+            {
+              "fieldType": "html",
+              "html": " <input type=\"checkbox\" name=\"aceptar_politica\" required>\n    He leído y acepto la <a href=\"politica-privacidad.html\" target=\"_blank\">Política de Privacidad</a>.\n<!-- Your custom HTML here --->\n\n\n"
+            }
+          ]
+        },
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "d36bfb77-d103-4101-86ae-e98bb3f2ae4b",
+      "name": "On form submission",
+      "webhookId": "d18159be-0924-409a-a14e-5caf9088affc"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1XLaTNKJduJtsbZNOA5TRk_Le5f9TqnuvyhvWkQS9hb0/edit?gid=0#gid=0",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Full 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1XLaTNKJduJtsbZNOA5TRk_Le5f9TqnuvyhvWkQS9hb0/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Nombre ": "={{ $json.Nombre }}",
+            "Email": "={{ $json.Email }}"
+          },
+          "matchingColumns": [
+            "Email"
+          ],
+          "schema": [
+            {
+              "id": "Nombre ",
+              "displayName": "Nombre ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        208,
+        0
+      ],
+      "id": "6c506c58-d6a3-4c86-956e-d8ae1959d12d",
+      "name": "Append or update row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "CK681pryAaae8AUQ",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-08-05T16:52:08.000Z",
+  "versionId": "bf0c779b-03d2-4aeb-a303-dae7546f2bf7"
+}
