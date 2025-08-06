@@ -1,0 +1,50 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2025-08-05T09:56:20.815Z",
+  "id": "ADKlgIeDStCczieA",
+  "isArchived": true,
+  "meta": null,
+  "name": "Prueba_v1",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "766b160d-5617-4836-9d9a-83b0b229a55f",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -496,
+        -128
+      ],
+      "id": "0af2bc70-5dd6-4f8e-b31b-d1c913f83828",
+      "name": "Webhook",
+      "webhookId": "766b160d-5617-4836-9d9a-83b0b229a55f"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Madrid",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-08-05T09:57:30.587Z",
+      "updatedAt": "2025-08-05T09:57:30.587Z",
+      "id": "CdCbG0MEiDSOd9Z5",
+      "name": "🚀desarrollo"
+    },
+    {
+      "createdAt": "2025-08-05T09:57:04.987Z",
+      "updatedAt": "2025-08-05T09:57:04.987Z",
+      "id": "YgSp5y6K5Y6z93sM",
+      "name": "preubas"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-08-05T19:39:34.000Z",
+  "versionId": "2b9654b2-220d-4a98-aa81-2c537a702e3d"
+}
