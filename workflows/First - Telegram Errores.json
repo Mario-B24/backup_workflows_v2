@@ -1,0 +1,81 @@
+{
+  "active": false,
+  "connections": {
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-08-05T16:53:31.225Z",
+  "id": "pu7x0m6kbNalFZ0c",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "First - Telegram Errores",
+  "nodes": [
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "cfab95c7-2d9e-4177-89a2-242cde328505",
+      "name": "Telegram Trigger",
+      "webhookId": "c8387694-418f-4217-a7c9-965446e2292b",
+      "credentials": {
+        "telegramApi": {
+          "id": "fBZ06ORB3jVZ3bI6",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.message.chat.id }}",
+        "text": "=Eco: {{ $json.message.text }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "2840f70f-e785-4b91-8945-2ff78902105d",
+      "name": "Send a text message",
+      "webhookId": "10390845-36ab-45c3-ac83-0fc470051c64",
+      "credentials": {
+        "telegramApi": {
+          "id": "fBZ06ORB3jVZ3bI6",
+          "name": "Telegram account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-08-05T16:59:56.000Z",
+  "versionId": "6f315ee6-ee97-4734-aeea-491409d51731"
+}
